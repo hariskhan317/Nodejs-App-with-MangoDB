@@ -1,0 +1,20 @@
+1. Build your Images
+2. Build Your Network
+3. Build container for Mangodb Within Network that you Created 
+4. Build Container for node app Within Network that you Created
+
+
+
+#commands
+
+#for network
+docker network create nodenetwork
+
+# for image
+docker build -t nodeimg .
+
+# for node container 
+docker run --name nodeapp -d -p 3000:3000 --network nodenetwork nodeimg
+
+# for mongo container
+docker run --name mongoapp -d --network nodenetwork mongo
